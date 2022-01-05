@@ -1,0 +1,60 @@
+//Initial Template for Java
+
+import java.io.*;
+import java.util.*;
+
+class GFG{
+    public static void main(String args[])throws IOException
+    {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(in.readLine());
+        while(t-- > 0){
+            String s = in.readLine();
+            
+            Solution ob = new Solution();
+            System.out.println(ob.decodedString(s));
+        }
+    }
+}// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution{
+    static String decodedString(String s){
+      Stack<String> stChar=new Stack<String>();
+        Stack<Integer> stInt=new Stack<Integer>();
+        StringBuilder res=new StringBuilder("");
+        for(int i=0;i<s.length();){
+            char ch=s.charAt(i);
+            
+            if(Character.isDigit(ch)){
+                int num=ch-'0';i++;
+                while(Character.isDigit(s.charAt(i))){
+                    num=num*10+s.charAt(i)-'0';i++;
+                }
+                stInt.push(num);
+            }else if(ch=='['){
+                stChar.push(res.toString());
+                res=new StringBuilder("");
+                i++;
+            }
+            else if(ch==']'){
+                int times=stInt.pop();
+                StringBuilder temp=new StringBuilder(stChar.pop());
+                 for(int j=1;j<=times;j++){
+                        temp.append(res);
+                 }
+                
+                 res=temp;
+                 i++;
+                
+            }else{
+                res.append(ch);i++;
+            }
+            
+        }
+        
+        return res.toString();
+   }
+}
