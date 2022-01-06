@@ -1,0 +1,28 @@
+class Solution {
+    public int longestMountain(int[] arr) {
+        int maxLen=0;
+        
+        for(int i=1;i<arr.length-1;i++){
+            
+            if(arr[i]>arr[i-1] &&arr[i]>arr[i+1]){
+                int leftmin=i-1;
+                int rightmin=i+1;
+                
+                while(leftmin>=1 &&arr[leftmin]>arr[leftmin-1]){
+                    leftmin--;
+                }
+                
+                while(rightmin<arr.length-1 &&arr[rightmin]>arr[rightmin+1]){
+                    rightmin++;
+                }
+                
+                
+                maxLen=Math.max(maxLen,rightmin-leftmin+1);
+                
+                
+            }
+        }
+        
+        return maxLen;
+    }
+}
