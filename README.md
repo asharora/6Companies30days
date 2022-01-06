@@ -18,3 +18,7 @@ Codes For Arsh Challenge
 13. Squares in N*N Chessboard
 14. Total Decoding Messages
 15. Distributing M items in a circle of size N starting from K-th position
+
+#### -- Day 6-10 (Goldman Sach):
+1. Calculating Maximum Profit
+2. Longest Mountain in Array
